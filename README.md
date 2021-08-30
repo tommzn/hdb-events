@@ -1,2 +1,2 @@
-# hdb-events
-HomeDashboard Event Lib
+# HomeDashboard Event Lib
+Contains event definitions for the HomeDashboard project.
