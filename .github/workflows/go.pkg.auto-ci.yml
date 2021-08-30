@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   compile:
-    name: Compole for Golang
+    name: Compile for Golang
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -15,7 +15,7 @@ jobs:
         with:
           go-version: 1.16
       - name: Install Protobuf compiler
-        run: go install google.golang.org/protobuf/cmd/protoc-gen-go
+        run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
       - name: Compile
         run: protoc --go_out=src/go *.proto
       - name: Debug
