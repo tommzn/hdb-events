@@ -1,0 +1,37 @@
+// HomeDashboard Weather Event Schema.
+
+syntax = "proto3";
+package tutorial;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/tommzn/hdb-events-go";
+
+// Weather information for a single point in time.
+message Weather {
+
+    // Timestamp a weather infirmation is related to.
+    google.protobuf.Timestamp   Timestamp   = 1;    
+
+    // Weather description.
+    string                      Weather     = 2;    
+
+    // Temperature in °C
+    int32                       Temperature = 3;
+
+    // Wind speed.
+    int32                       Wind        = 4;
+
+    // Weather icon.
+    string                      Icon        = 5;
+
+    // Location a weather information belongs to.
+    message Location {
+
+        // Longitude coordinate.
+        float                   Longitude   = 1;
+
+        // Latitude coordinate.
+        float                   Latitude    = 2;
+    }
+}
