@@ -17,7 +17,7 @@ jobs:
       - name: Install Protobuf compiler
         run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
       - name: Debug 1
-        run: echo ${{ env.GOPATH }}
+        run: ls -al ${{ env.GOROOT }}
       - name: Compile
         run: protoc --go_out=src/go *.proto
       - name: Debug 2
