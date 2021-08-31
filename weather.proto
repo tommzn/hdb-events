@@ -1,7 +1,7 @@
 // HomeDashboard Weather Event Schema.
 
 syntax = "proto3";
-package hdb-events;
+package hdb_events;
 
 import "google/protobuf/timestamp.proto";
 
