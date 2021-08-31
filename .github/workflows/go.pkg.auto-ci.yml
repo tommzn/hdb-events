@@ -28,6 +28,7 @@ jobs:
           export GOBIN=$(go env GOPATH)/bin
           export PATH=$PATH:$GOPATH
           export PATH=$PATH:$GOBIN
+          export GO111MODULE=on
           env
       - name: Go env
         run: go env
