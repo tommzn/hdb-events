@@ -26,6 +26,7 @@ jobs:
         run: |
           export GOBIN=$(go env GOPATH)/bin
           export PATH=$PATH:$GOBIN
+          env
       - name: Go env
         run: go env
         env:
