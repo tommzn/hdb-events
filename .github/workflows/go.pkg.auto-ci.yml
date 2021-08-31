@@ -29,20 +29,11 @@ jobs:
           export PATH=$PATH:$GOPATH
           export PATH=$PATH:$GOBIN
           export GO111MODULE=on
-          env
-      - name: Go env
-        run: go env
-        env:
-          GOBIN: ${{ env.GOPATH }}/bin
-      - name: Go Path
-        run: echo "$ENV.GOPATH"
       - name: Install Protobuf compiler
-        run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-      - name: Go bin ls
-        run: ls -al /home/runner/go/bin
+        run: |
+          go get google.golang.org/protobuf/cmd/protoc-gen-go
+          go get google.golang.org/grpc/cmd/protoc-gen-go-grpc
       - name: Compile
         run: protoc -I=protobuf-defs/ --go_out=golang-events/ *.proto
-      - name: Go env 2
-        run: go env
       - name: Debug 2
         run: ls -al golang-events/
