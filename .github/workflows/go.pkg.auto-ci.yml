@@ -36,7 +36,7 @@ jobs:
           retention-days: 1
 
   deploy-go:
-    name: Update HomeDashboard events lib
+    name: Update Golang Events
     runs-on: ubuntu-latest
     needs: compile-go
     steps:
@@ -50,6 +50,6 @@ jobs:
         with:
           name: golang-events
       - name: Debug Log
-        run: env
+        run: echo "$ENV.GITHUB_SERVER_URL/$ENV.GITHUB_REPOSITORY/commit/$ENV.GITHUB_SHA"
 
 
