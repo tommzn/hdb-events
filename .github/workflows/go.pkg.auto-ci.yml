@@ -26,8 +26,8 @@ jobs:
         run: go env
         env:
           GOBIN: ${{ env.GOPATH }}/bin
-      - name: Go bin
-        run: ls -al ${{ env.GOPATH }}/bin
+      - name: Path
+        run: ls -al ${{ env.PATH }}
       - name: Install Protobuf compiler
         run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
       - name: Go bin ls
