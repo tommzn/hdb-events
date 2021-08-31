@@ -50,6 +50,6 @@ jobs:
         with:
           name: golang-events
       - name: Debug Log
-        run: echo "$ENV.GITHUB_SERVER_URL/$ENV.GITHUB_REPOSITORY/commit/$ENV.GITHUB_SHA"
+        run: echo "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
 
 
