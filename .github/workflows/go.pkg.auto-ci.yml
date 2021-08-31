@@ -37,4 +37,4 @@ jobs:
       - name: Compile
         run: protoc -I=protobuf-defs/ --go_out=golang-events/ protobuf-defs/*.proto
       - name: Debug 2
-        run: ls -al golang-events/github.com/tommzn/hdb-events-go/
+        run: cat golang-events/github.com/tommzn/hdb-events-go/weather.pb.go
