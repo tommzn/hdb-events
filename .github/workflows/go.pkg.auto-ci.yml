@@ -4,12 +4,11 @@ on:
     branches:
       - main
 jobs:
-  compile:
-    name: Compile for Golang
+
+  setup-go:
+    name: Setup for Protobuf Golang Compile
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Protobuf event defs
-        uses: actions/checkout@v2
       - name: Install Go
         uses: actions/setup-go@v2
         with:
@@ -26,21 +25,29 @@ jobs:
           sudo apt-get install -y protobuf-compiler
           go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           protoc --version 
+      
+  compile-go:
+    name: Compile for Golang
+    runs-on: ubuntu-latest
+    needs: setup-go 
+    steps:
+      - name: Checkout Protobuf event defs
+        uses: actions/checkout@v2
       - name: Compile
         run: protoc --go_out=./ *.proto
-      - name: Upload Golang artifact
+      - name: Upload Golang artifacts
         uses: actions/upload-artifact@v2
         with:
           name: golang-events
           path: ./*.pb.go
           retention-days: 1
 
-  deploy:
-    name: Update HomeDashboard event lib
+  deploy-go:
+    name: Update HomeDashboard events lib
     runs-on: ubuntu-latest
-    needs: compile
+    needs: compile-go
     steps:
-      - name: Checkout Protobuf event defs
+      - name: Checkout Golang events lib
         uses: actions/checkout@v2
         with:
           repository: tommzn/hdb-events-go
