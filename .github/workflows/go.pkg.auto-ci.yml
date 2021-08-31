@@ -34,5 +34,7 @@ jobs:
         run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
       - name: Compile
         run: protoc -I=protobuf-defs/ --go_out=golang-events/ *.proto
+      - name: Go env 2
+        run: go env
       - name: Debug 2
         run: ls -al golang-events/
