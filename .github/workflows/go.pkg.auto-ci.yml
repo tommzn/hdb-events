@@ -18,7 +18,7 @@ jobs:
       - name: Checkout Golang event repo
         uses: actions/checkout@v2
         with:
-          repository: tommzn/hbd-events-go
+          repository: tommzn/hdb-events-go
           ref: main
           path: golang-events
       - name: Install Go
