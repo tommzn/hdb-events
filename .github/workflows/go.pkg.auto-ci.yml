@@ -7,6 +7,8 @@ jobs:
   compile:
     name: Compile for Golang
     runs-on: ubuntu-latest
+    env:
+      GOBIN: ${{ env.GOPATH }}/bin
     steps:
       - name: Checkout Protobuf event defs
         uses: actions/checkout@v2
@@ -24,6 +26,10 @@ jobs:
           go-version: 1.16
       - name: Go env
         run: go env
+      - name: Go Path
+        run: echo ${{ env.GOPATH }}
+      - name: Go bin
+        run: ls -al ${{ env.GOPATH }}/bin
       - name: Install Protobuf compiler
         run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
       - name: Compile
