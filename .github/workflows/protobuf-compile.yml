@@ -51,7 +51,7 @@ jobs:
           name: golang-events
       - name: Update Repository
         run: |
-          git add
+          git add .
           git commit -m "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
           git push origin main
 
