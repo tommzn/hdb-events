@@ -1,11 +1,11 @@
 // HomeDashboard Weather Event Schema.
 
 syntax = "proto3";
-package hdb_events;
+package events;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/tommzn/hdb-events-go";
+option go_package = "events";
 
 // Weather information for a single point in time.
 message Weather {
@@ -25,13 +25,16 @@ message Weather {
     // Weather icon.
     string                      Icon        = 5;
 
-    // Location a weather information belongs to.
-    message Location {
+    // Location a weather information belongs to.    
+    Location                    Location    = 6;
+}
 
-        // Longitude coordinate.
-        float                   Longitude   = 1;
+// Location defines weather coordinates
+message Location {
 
-        // Latitude coordinate.
-        float                   Latitude    = 2;
-    }
+    // Longitude coordinate.
+    float                   Longitude   = 1;
+
+    // Latitude coordinate.
+    float                   Latitude    = 2;
 }
