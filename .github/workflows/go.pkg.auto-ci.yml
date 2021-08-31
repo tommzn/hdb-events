@@ -34,6 +34,6 @@ jobs:
           sudo apt-get install -y protobuf-compiler
           protoc --version 
       - name: Compile
-        run: protoc -I=protobuf-defs/ --go_out=golang-events/ *.proto
+        run: protoc -I=protobuf-defs/ --go_out=golang-events/ protobuf-defs/*.proto
       - name: Debug 2
         run: ls -al golang-events/
