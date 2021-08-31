@@ -51,6 +51,8 @@ jobs:
           name: golang-events
       - name: Update Repository
         run: |
+          git config --global user.email "tommzn@gmx.de"
+          git config --global user.name "tommzn"
           git add .
           git commit -m "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
           git push origin main
