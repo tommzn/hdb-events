@@ -28,12 +28,28 @@ jobs:
           protoc --version 
       - name: Compile
         run: protoc --go_out=./ *.proto
-      - name: Debug 2
-        run: ls -al
       - name: Upload Golang artifact
         uses: actions/upload-artifact@v2
         with:
           name: golang-events
           path: ./*.pb.go
           retention-days: 1
+
+  deploy:
+    name: Update HomeDashboard event lib
+    runs-on: ubuntu-latest
+    needs: compile
+    steps:
+      - name: Checkout Protobuf event defs
+        uses: actions/checkout@v2
+        with:
+          repository: tommzn/hdb-events-go
+          ref: main
+      - name: Download Golang events
+        uses: actions/download-artifact@v2
+        with:
+          name: golang-events
+      - name: Debug Log
+        run: ls -al
+
 
