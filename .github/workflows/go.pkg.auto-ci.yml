@@ -33,6 +33,7 @@ jobs:
           export PATH=$PATH:$GOPATH
           export PATH=$PATH:$GOBIN
           export GO111MODULE=on
+          mkdir -p ${{ env.PROTOBUF_DEST_GOLANG }}
       - name: Install Protobuf compiler
         run: |
           sudo apt-get install -y protobuf-compiler
