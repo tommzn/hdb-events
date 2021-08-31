@@ -7,18 +7,26 @@ jobs:
   compile:
     name: Compile for Golang
     runs-on: ubuntu-latest
+    env:
+      GOPATH: ${{ github.workspace }}
+      GOBIN: ${{ github.workspace }}/bin
     steps:
-      - name: Checkout code
+      - name: Checkout Protobuf event defs
         uses: actions/checkout@v2
+        with:
+          path: protobuf-defs
+      - name: Checkout Golang event repo
+        uses: actions/checkout@v2
+        with:
+          repository: tommzn/hbd-events-go
+          path: golang-events
       - name: Install Go
         uses: actions/setup-go@v2
         with:
           go-version: 1.16
       - name: Install Protobuf compiler
         run: go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-      - name: Debug 1
-        run: ls -al ${{ env.GOBIN }}
       - name: Compile
-        run: protoc --go_out=src/go *.proto
+        run: protoc -I=protobuf-defs/ --go_out=golang-events/ *.proto
       - name: Debug 2
-        run: ls -al
+        run: ls -al golang-events/
