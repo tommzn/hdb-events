@@ -26,8 +26,8 @@ jobs:
         run: go env
         env:
           GOBIN: ${{ env.GOPATH }}/bin
-      - name: Go Path
-        run: echo ${{ env.GOPATH }}
+      - name: Go Path ls
+        run: ls -al /home/runner/go
       - name: Go bin
         run: ls -al ${{ env.GOPATH }}/bin
       - name: Install Protobuf compiler
