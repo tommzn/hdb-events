@@ -32,7 +32,7 @@ jobs:
       - name: Install Protobuf compiler
         run: |
           sudo apt-get install -y protobuf-compiler
-          go install google.golang.org/protobuf/cmd/protoc-gen-go
+          go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
           protoc --version 
       - name: Compile
         run: protoc -I=protobuf-defs/ --go_out=golang-events/ protobuf-defs/*.proto
