@@ -33,7 +33,7 @@ jobs:
       - name: Go bin ls
         run: ls -al /home/runner/go/bin
       - name: Compile
-        run: protoc -I=protobuf-defs/ --go_out=golang-events/ *.proto
+        run: protoc-gen-go -I=protobuf-defs/ --go_out=golang-events/ *.proto
       - name: Go env 2
         run: go env
       - name: Debug 2
