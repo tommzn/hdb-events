@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: tommzn/hbd-events-go
+          ref: main
           path: golang-events
       - name: Install Go
         uses: actions/setup-go@v2
