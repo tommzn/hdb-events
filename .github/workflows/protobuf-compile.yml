@@ -52,7 +52,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: golang-events
+      - name: Check for Changes
+        id: git-diff
+        run: git diff --quiet
       - name: Update Repository
+        if: steps.git-diff.exitcode > 0
         env:
           REPO_KEY: ${{ secrets.PUSH_TOKEN }}
           USERNAME: ${{ secrets.PUSH_USER }}
