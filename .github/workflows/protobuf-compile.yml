@@ -54,5 +54,6 @@ jobs:
           git config --global user.name 'Tommzn'
           git config --global user.email 'tommzn@gmx.de'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git add -A
           git commit -am "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
           git push
