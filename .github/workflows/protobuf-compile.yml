@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      
 jobs:
   compile-go:
     name: Compile for Golang
