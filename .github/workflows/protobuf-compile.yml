@@ -52,11 +52,13 @@ jobs:
         with:
           name: golang-events
       - name: Update Repository
+        env:
+          REPO_KEY: ${{secrets.PUSH_TOKEN}}
+          USERNAME: github-actions[bot]
         run: |
           git config --global user.name 'Tommzn'
           git config --global user.email 'tommzn@gmx.de'
-          git remote set-url origin https://tommzn:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.GOLANG_EVENTS_REPO }}
-          git remote -v
+          git remote set-url origin https://$USERNAME:$REPO_KEY@github.com/${{ env.GOLANG_EVENTS_REPO }}
           git add -A
           git commit -am "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
           git push
