@@ -59,7 +59,8 @@ jobs:
         run: |
           git config --global user.name 'Tommzn'
           git config --global user.email 'tommzn@gmx.de'
-          git remote set-url origin https://$REPO_KEY@github.com/$GOLANG_EVENTS_REPO
+          #git remote set-url origin https://$REPO_KEY@github.com/$GOLANG_EVENTS_REPO
           git add -A
           git commit -am "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
-          git push
+          git config -l | grep 'http\..*\.extraheader' | cut -d= -f1 | xargs -L1 git config --unset-all
+          git push --force "https://tommzn:$REPO_KEY@github.com/$GOLANG_EVENTS_REPO" main:main
