@@ -51,10 +51,12 @@ jobs:
           name: golang-events
       - name: Update Repository
         uses: actions-x/commit@v2
+        env:
+          GITHUB_ACTOR: tommzn
+          COMMIT_MESSAGE: "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
         with:
           email: tommzn@gmx.de
-          name: tommzn
-          message: "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
+          message: ${{ env.COMMIT_MESSAGE }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
 
