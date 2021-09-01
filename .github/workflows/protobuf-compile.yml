@@ -58,7 +58,8 @@ jobs:
         run: |
           git config --global user.name 'Tommzn'
           git config --global user.email 'tommzn@gmx.de'
-          git remote set-url origin https://$USERNAME:$REPO_KEY@github.com/${{ env.GOLANG_EVENTS_REPO }}
+          git remote set-url origin https://$USERNAME:$REPO_KEY@github.com/$GOLANG_EVENTS_REPO
+          echo $REPO_KEY
           git add -A
           git commit -am "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
           git push
