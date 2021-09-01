@@ -14,18 +14,18 @@ message Weather {
     google.protobuf.Timestamp   Timestamp   = 1;    
 
     // Weather description.
-    string                      Weather     = 2;    
+    string                      description = 2;    
 
     // Temperature in °C
     int32                       Temperature = 3;
 
-    // Wind speed.
+    // Wind speed
     int32                       Wind        = 4;
 
-    // Weather icon.
+    // Weather icon from Open Weather Map
     string                      Icon        = 5;
 
-    // Location a weather information belongs to.    
+    // Location a weather information belongs to    
     Location                    Location    = 6;
 }
 
@@ -33,8 +33,8 @@ message Weather {
 message Location {
 
     // Longitude coordinate.
-    float                   Longitude   = 1;
+    float   Longitude   = 1;
 
     // Latitude coordinate.
-    float                   Latitude    = 2;
+    float   Latitude    = 2;
 }
