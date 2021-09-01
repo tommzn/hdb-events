@@ -50,13 +50,9 @@ jobs:
         with:
           name: golang-events
       - name: Update Repository
-        uses: actions-x/commit@v2
-        env:
-          GITHUB_ACTOR: tommzn
-          COMMIT_MESSAGE: "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
-        with:
-          email: tommzn@gmx.de
-          message: ${{ env.COMMIT_MESSAGE }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-
+        run: |
+          git config --global user.name 'Tommzn'
+          git config --global user.email 'tommzn@gmx.de'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "fix: Updated by $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
+          git push
