@@ -7,29 +7,100 @@ import "google/protobuf/timestamp.proto";
 
 option go_package = ".;events";
 
-// Weather information for a single point in time.
-message Weather {
+// Weather data contains current weather and a 7-days forecast for a given location.
+message WeatherData {
+    
+    // Location a weather information belongs to    
+    Location                    Location    = 1;
+
+    // Defines units for temperature and wind speed. Possible values are: default, metric, imperial
+    string                      Units       = 2;     
+
+    // Current weather data
+    CurrentWeather              Current     = 3;
+
+    // 7-days forecast
+    repeated ForecastWeather    Forecast    = 4;
+
+}
+
+// Current weather data.
+message CurrentWeather {
 
     // Timestamp a weather infirmation is related to.
     google.protobuf.Timestamp   Timestamp   = 1;    
 
-    // Weather description.
-    string                      description = 2;    
+    // Temperature. Units - default: kelvin, metric: Celsius, imperial: Fahrenheit
+    double                      Temperature = 2; 
 
-    // Temperature in °C
-    int64                       Temperature = 3;
+    // Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
+	double                      WindSpeed   = 3;
 
-    // Wind speed
-    int64                       Wind        = 4;
-
-    // Weather icon from Open Weather Map
-    string                      Icon        = 5;
-
-    // Location a weather information belongs to    
-    Location                    Location    = 6;
+    // Weather details
+	WeatherDetails              Weather     = 4;
+    
 }
 
-// Location defines weather coordinates
+
+// ForeCastWeather contains forecast weather data for a single day
+message ForecastWeather {
+
+	// Timestamp a weather infirmation is related to.
+    google.protobuf.Timestamp   Timestamp       = 1;    
+
+    // Forecast temperatures for the whole day
+	ForecastTemperatures        Temperatures    = 2;
+	
+    // Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
+	double                      WindSpeed       = 3;
+
+    // Weather details
+	WeatherDetails              Weather         = 4;    
+}
+
+
+// WeatherDetails contains information of current weather or forecast
+// Full list of condition id, group and description and Icons is available at: https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2
+message WeatherDetails {
+
+    // Weather condition id
+    int64   ConditionId = 1;
+
+    // Group of weather parameters (Rain, Snow, Extreme etc.)
+    string  Group       = 2;    
+
+    // Weather condition within the group
+    string  Description = 2;    
+
+    // Weather icon from Open Weather Map
+    string  Icon        = 5;
+}
+
+
+// forecastTemperature contains forecast temperature data for a single day
+// Units – default: kelvin, metric: Celsius, imperial: Fahrenheit
+message ForecastTemperatures {
+
+    // Morning temperature
+	double Morning  = 1;
+
+    // Day temperature
+	double Day      = 2;
+
+    // Evening temperature
+	double Evening  = 3;
+
+    // Night temperature
+	double Night    = 4;
+
+    // Min daily temperature.
+	double DayMin   = 5;
+
+    // Max daily temperature.
+	double DayMax   = 6;
+}
+
+// Geographical coordinates weather information are related to
 message Location {
 
     // Longitude coordinate.
