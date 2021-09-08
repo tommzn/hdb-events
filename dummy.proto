@@ -1,0 +1,17 @@
+// HomeDashboard Weather Event Schema.
+
+syntax = "proto3";
+package events;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = ".;events";
+
+// Dummy is an event for testing.
+message Dummy {
+
+    // Id of this event.
+    string Id = 1:
+}
+    
+    
