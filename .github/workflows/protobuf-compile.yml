@@ -55,7 +55,7 @@ jobs:
           name: golang-events
       - name: Check for Changes
         run: |
-          git add -N
+          git add -N .
           ! git diff --quiet
       - name: Update Repository
         if: ${{ success() }}
