@@ -53,12 +53,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: golang-events
-      - name: Debug Log
-        run: |
-          ls -al
-          git diff
       - name: Check for Changes
         run: |
+          git add -N
           ! git diff --quiet
       - name: Update Repository
         if: ${{ success() }}
