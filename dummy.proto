@@ -11,7 +11,7 @@ option go_package = ".;events";
 message Dummy {
 
     // Id of this event.
-    string Id = 1:
+    string Id = 1;
 }
     
     
