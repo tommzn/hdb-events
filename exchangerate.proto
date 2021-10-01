@@ -1,0 +1,25 @@
+// HomeDashboard Weather Event Schema.
+
+syntax = "proto3";
+package events;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = ".;events";
+
+// ExchangeRate contains rate of currency translation between two difference currencies at a sepcific time.
+message ExchangeRate {
+    
+    // FromCurrency is the base currency used for exchange rate.
+    string  FromCurrency                    = 1;
+    
+    // ToCurrency is the target currency for an exchange rate.
+    string ToCurrency                       = 2;
+
+    // Rate is an exchange rate for two currencies at a specific time.
+    double Rate                             = 3;
+
+    // Timestamp is a point in time an exchange is valid.
+    google.protobuf.Timestamp   Timestamp   = 4;    
+
+}
