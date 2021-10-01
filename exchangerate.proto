@@ -23,3 +23,10 @@ message ExchangeRate {
     google.protobuf.Timestamp   Timestamp   = 4;    
 
 }
+
+// ExchangeRates is a list of different exchange rates.
+message ExchangeRates {
+
+    // Rates is a list of ExhangeRate.
+    repeated ExchangeRate Rates = 1;
+}
