@@ -1,0 +1,32 @@
+// HomeDashboard Indoor Climate Event Schema.
+
+syntax = "proto3";
+package events;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = ".;events";
+
+// Indoor Climate data contains a measurement and it's value given by a device at a specific time.
+message IndoorClimate {
+    
+    // Timestamp an indoor climate information is related to.
+    google.protobuf.Timestamp   Timestamp   = 1;    
+
+    // DEvide which sends this measurement.
+    string          DeviceId    = 2;
+    
+    // Measurement type.
+    MeasurementType Type        = 3;
+    
+    // Measurement value.
+    string          value       = 4;     
+
+}
+
+// Measurement types.
+enum MeasurementType {
+    TEMPERATURE = 0;
+    HUMIDITY = 1;
+    BATTERY = 2;
+  }
