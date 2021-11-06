@@ -1,0 +1,22 @@
+// HomeDashboard Weather Event Schema.
+
+syntax = "proto3";
+package events;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = ".;events";
+
+// BillingReport contains AWS costs extracted from billing reports.
+message BillingReport {
+    
+    // BillingPeriod this report belongs to.
+    string BillingPeriod                       = 1;
+
+    // BillingAmount contains a list of amounts realated to a currency.
+    map<string, double> BillingAmount  = 2;
+
+    // TaxAmount contains a list of tax amounts realated to a currency.
+    map<string, double> TaxAmount  = 3;
+
+}
