@@ -38,6 +38,9 @@ message CurrentWeather {
 
     // Weather details
 	WeatherDetails              Weather     = 4;
+	
+    // Wind direction, degrees (meteorological)
+    int64   WindDirection = 5;
     
 }
 
