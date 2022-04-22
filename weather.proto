@@ -40,7 +40,7 @@ message CurrentWeather {
 	WeatherDetails              Weather     = 4;
 	
     // Wind direction, degrees (meteorological)
-    int64    WindDirection = 5;
+    int64                       WindDirection = 5;
     
 }
 
