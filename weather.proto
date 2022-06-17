@@ -41,7 +41,9 @@ message CurrentWeather {
 	
     // Wind direction, degrees (meteorological)
     int64                       WindDirection = 5;
-    
+
+    // Wind gust. Wind gust. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
+	double                      WindGust    = 6;
 }
 
 
@@ -59,9 +61,6 @@ message ForecastWeather {
 
     // Weather details
 	WeatherDetails              Weather         = 4;    
-
-    // Wind gust. Wind gust. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
-	double                      WindGust        = 5;
 }
 
 
