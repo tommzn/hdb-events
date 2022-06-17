@@ -59,6 +59,9 @@ message ForecastWeather {
 
     // Weather details
 	WeatherDetails              Weather         = 4;    
+
+    // Wind gust. Wind gust. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
+	double                      WindGust        = 5;
 }
 
 
