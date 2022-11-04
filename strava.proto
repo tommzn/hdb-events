@@ -1,0 +1,78 @@
+// HomeDashboard Strava Athlete Stats Event Schema.
+
+syntax = "proto3";
+package events;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = ".;events";
+
+// AthleteStats contains stats, current year and total, together with latest activities of an athlete.
+message AthleteStats {
+    
+    // ActivityStats contains current year and total stats for an athlete.
+    ActivityStats               ActivityStats   = 1;
+
+    // List of latest activities of an athlete.
+    repeated Activity           Activities      = 2;
+
+    // Timestamp,  point in time this stats has been retrieved from Strava.
+    google.protobuf.Timestamp   Timestamp       = 3;    
+
+}
+
+// ActivityTotal contains current year and total stats for an athlete.
+message ActivityStats {
+
+    // The longest distance ridden by the athlete.
+	float BiggestRideDistance           = 1;
+
+	// The recent (last 4 weeks) ride stats for the athlete.
+	ActivityTotal RecentRideTotals      = 2;
+
+	// The recent (last 4 weeks) run stats for the athlete.
+	ActivityTotal RecentRunTotals       = 3;
+
+	// The year to date ride stats for the athlete.
+	ActivityTotal YearToDateRideTotals  = 4;
+
+	// The year to date run stats for the athlete.
+	ActivityTotal YearToDateRunTotals   = 5;
+
+	// The all time ride stats for the aTthlete.
+	ActivityTotal AllRideotals          = 6;
+
+	// The all time run stats for the athlete.
+	ActivityTotal AllRunTotals          = 7;
+}   
+
+message ActivityTotal {
+    
+	// The number of activities considered in this total.
+	int64 Count         = 1;
+
+	// The total distance covered by the considered activities.
+	string Distance     = 2;
+
+	// The total moving time of the considered activities in seconds.
+	string MovingTime   = 3;
+}
+
+// Description of a single activity.
+message Activity struct {
+
+	// The name of the activity.
+	string Name         = 1;
+
+	// The activity's distance.
+	string Distance     = 2;
+
+	// The activity's moving time.
+	string MovingTime   = 3;
+
+	// Type of an activity.
+	string SportType    = 4;
+
+    // Timestamp an activity is related to.
+    google.protobuf.Timestamp Timestamp = 5; 
+}
