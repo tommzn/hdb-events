@@ -59,7 +59,7 @@ message ActivityTotal {
 }
 
 // Description of a single activity.
-message Activity struct {
+message Activity {
 
 	// The name of the activity.
 	string Name         = 1;
