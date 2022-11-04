@@ -25,7 +25,7 @@ message AthleteStats {
 message ActivityStats {
 
     // The longest distance ridden by the athlete.
-	float BiggestRideDistance           = 1;
+	double BiggestRideDistance           = 1;
 
 	// The recent (last 4 weeks) ride stats for the athlete.
 	ActivityTotal RecentRideTotals      = 2;
@@ -52,10 +52,10 @@ message ActivityTotal {
 	int64 Count         = 1;
 
 	// The total distance covered by the considered activities.
-	string Distance     = 2;
+	double Distance     = 2;
 
 	// The total moving time of the considered activities in seconds.
-	string MovingTime   = 3;
+	int64 MovingTime   = 3;
 }
 
 // Description of a single activity.
@@ -65,10 +65,10 @@ message Activity {
 	string Name         = 1;
 
 	// The activity's distance.
-	string Distance     = 2;
+	double Distance     = 2;
 
 	// The activity's moving time.
-	string MovingTime   = 3;
+	int64 MovingTime   = 3;
 
 	// Type of an activity.
 	string SportType    = 4;
