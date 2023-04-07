@@ -47,6 +47,9 @@ message CurrentWeather {
 
     // Wind gust. Wind gust. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
 	double                      WindGust    = 6;
+
+    // Rain mm/h (Liter/hour)
+	double                      Rain    = 7;
 }
 
 
