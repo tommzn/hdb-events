@@ -22,6 +22,9 @@ message WeatherData {
     // 7-days forecast
     repeated ForecastWeather    Forecast    = 4;
 
+    // 48 hours forecast
+    repeated CurrentWeather     HourlyForecast = 5;
+
 }
 
 // Current weather data.
