@@ -24,6 +24,17 @@ message IndoorClimate {
 
 }
 
+// RoomClimate contains information, temperature, humidity and maybe battey level, for a single room.
+message RoomClimate {
+    
+    // Timestamp an indoor climate information is related to.
+    google.protobuf.Timestamp   Timestamp   = 1;    
+
+    string  Temperature = 2;     
+    string  Humidity    = 3;     
+    string  Battery     = 4;     
+}
+
 // Measurement types.
 enum MeasurementType {
     TEMPERATURE = 0;
