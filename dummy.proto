@@ -10,6 +10,10 @@ message Dummy {
 
     // Id of this event.
     string Id = 1;
+
+    // Id of this event.
+    string Id2 = 2;
+
 }
     
     
