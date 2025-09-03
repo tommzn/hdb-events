@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v5
         with:
           go-version: 1.24
       - name: Go Env Setup
@@ -30,7 +30,7 @@ jobs:
       - name: Compile
         run: protoc --go_out=./ *.proto
       - name: Upload Golang artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: golang-events
           path: ./*.pb.go
@@ -45,12 +45,12 @@ jobs:
       GOLANG_EVENTS_REPO: tommzn/hdb-events-go
     steps:
       - name: Checkout Golang events lib
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
         with:
           repository: ${{ env.GOLANG_EVENTS_REPO }}
           ref: main
       - name: Download Golang events
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v5
         with:
           name: golang-events
       - name: Check for Changes
